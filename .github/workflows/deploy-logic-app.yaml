@@ -1,10 +1,9 @@
-
 name: Deploy Logic App to QA
 
 on:
   push:
     branches:
-      - main  # Adjust this to your repository's main branch
+      - main
 
 jobs:
   deploy:
@@ -21,5 +20,5 @@ jobs:
 
       - name: Deploy Logic App to QA
         run: |
-          # Replace with your deployment commands
-          # Example: az deployment group create --resource-group YourQAResourceGroup --template-file path/to/your/template.json --parameters path/to/your/parameters.json
+          az deployment group create --resource-group YourQAResourceGroup --template-file ${{ github.workspace }}/path/to/logic-app-template.json --parameters ${{ github.workspace }}/path/to/logic-app-parameters.json
+#${{ github.workspace }} this would represent the core repository where the logic apps ARM templates are stored.
