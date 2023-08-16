@@ -1,1 +1,25 @@
 
+name: Deploy Logic App to QA
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your repository's main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Logic App to QA
+        run: |
+          # Replace with your deployment commands
+          # Example: az deployment group create --resource-group YourQAResourceGroup --template-file path/to/your/template.json --parameters path/to/your/parameters.json
