@@ -1,1 +1,234 @@
-
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_logic_aaa_dev_euw_3_name": {
+            "defaultValue": "logic-aaa-dev-euw-3",
+            "type": "String"
+        },
+        "serverfarms_asp_aaa_dev_euw_externalid": {
+            "defaultValue": "/subscriptions/b0b7cf65-be9a-423d-abe1-8424a0f46596/resourceGroups/rg-aaa-dev-euw/providers/Microsoft.Web/serverfarms/asp-aaa-dev-euw",
+            "type": "String"
+        },
+        "virtualNetworks_vnet_aaa_dev_euw_0_externalid": {
+            "defaultValue": "/subscriptions/b0b7cf65-be9a-423d-abe1-8424a0f46596/resourceGroups/rg-aaa-dev-euw/providers/Microsoft.Network/virtualNetworks/vnet-aaa-dev-euw-0",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2022-09-01",
+            "name": "[parameters('sites_logic_aaa_dev_euw_3_name')]",
+            "location": "West Europe",
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/b0b7cf65-be9a-423d-abe1-8424a0f46596/resourceGroups/rg-aaa-dev-euw/providers/Microsoft.Insights/components/logic-aaa-dev-euw-3",
+                "environment": "dev",
+                "department": "Application Management",
+                "tier": "silver"
+            },
+            "kind": "functionapp,workflowapp",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_logic_aaa_dev_euw_3_name'), '.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(parameters('sites_logic_aaa_dev_euw_3_name'), '.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_asp_aaa_dev_euw_externalid')]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "vnetRouteAllEnabled": true,
+                "vnetImagePullEnabled": false,
+                "vnetContentShareEnabled": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": false,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 1
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "customDomainVerificationId": "5515F543B4BB8DD348D7BC4120103BEAFB70B157C38E9022F0E3D77FF50AD5C4",
+                "containerSize": 1536,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": true,
+                "redundancyMode": "None",
+                "publicNetworkAccess": "Enabled",
+                "storageAccountRequired": false,
+                "virtualNetworkSubnetId": "[concat(parameters('virtualNetworks_vnet_aaa_dev_euw_0_externalid'), '/subnets/snet-logic-nonprd-euw-1')]",
+                "keyVaultReferenceIdentity": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('sites_logic_aaa_dev_euw_3_name'), '/ftp')]",
+            "location": "West Europe",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_logic_aaa_dev_euw_3_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/b0b7cf65-be9a-423d-abe1-8424a0f46596/resourceGroups/rg-aaa-dev-euw/providers/Microsoft.Insights/components/logic-aaa-dev-euw-3",
+                "environment": "dev",
+                "department": "Application Management",
+                "tier": "silver"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('sites_logic_aaa_dev_euw_3_name'), '/scm')]",
+            "location": "West Europe",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_logic_aaa_dev_euw_3_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/b0b7cf65-be9a-423d-abe1-8424a0f46596/resourceGroups/rg-aaa-dev-euw/providers/Microsoft.Insights/components/logic-aaa-dev-euw-3",
+                "environment": "dev",
+                "department": "Application Management",
+                "tier": "silver"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('sites_logic_aaa_dev_euw_3_name'), '/web')]",
+            "location": "West Europe",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_logic_aaa_dev_euw_3_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/b0b7cf65-be9a-423d-abe1-8424a0f46596/resourceGroups/rg-aaa-dev-euw/providers/Microsoft.Insights/components/logic-aaa-dev-euw-3",
+                "environment": "dev",
+                "department": "Application Management",
+                "tier": "silver"
+            },
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php"
+                ],
+                "netFrameworkVersion": "v6.0",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2019",
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$logic-aaa-dev-euw-3",
+                "scmType": "None",
+                "use32BitWorkerProcess": false,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetName": "7ad3b06b-d3dc-4e1b-a6fc-17a299f6adc9_snet-logic-nonprd-euw-1",
+                "vnetRouteAllEnabled": true,
+                "vnetPrivatePortsCount": 2,
+                "publicNetworkAccess": "Enabled",
+                "cors": {
+                    "supportCredentials": false
+                },
+                "localMySqlEnabled": false,
+                "managedServiceIdentityId": 4982,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.2",
+                "ftpsState": "FtpsOnly",
+                "preWarmedInstanceCount": 1,
+                "functionAppScaleLimit": 0,
+                "functionsRuntimeScaleMonitoringEnabled": true,
+                "minimumElasticInstanceCount": 1,
+                "azureStorageAccounts": {}
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('sites_logic_aaa_dev_euw_3_name'), '/', parameters('sites_logic_aaa_dev_euw_3_name'), '.azurewebsites.net')]",
+            "location": "West Europe",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_logic_aaa_dev_euw_3_name'))]"
+            ],
+            "properties": {
+                "siteName": "logic-aaa-dev-euw-3",
+                "hostNameType": "Verified"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/virtualNetworkConnections",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('sites_logic_aaa_dev_euw_3_name'), '/7ad3b06b-d3dc-4e1b-a6fc-17a299f6adc9_snet-logic-nonprd-euw-1')]",
+            "location": "West Europe",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_logic_aaa_dev_euw_3_name'))]"
+            ],
+            "properties": {
+                "vnetResourceId": "[concat(parameters('virtualNetworks_vnet_aaa_dev_euw_0_externalid'), '/subnets/snet-logic-nonprd-euw-1')]",
+                "isSwift": true
+            }
+        }
+    ]
+}
