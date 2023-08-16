@@ -1,1 +1,15 @@
-
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_logic_aaa_dev_euw_3_name": {
+            "value": null
+        },
+        "serverfarms_asp_aaa_dev_euw_externalid": {
+            "value": null
+        },
+        "virtualNetworks_vnet_aaa_dev_euw_0_externalid": {
+            "value": null
+        }
+    }
+}
