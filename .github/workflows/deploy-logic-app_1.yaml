@@ -13,13 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Az PowerShell module
-        run: |
-          if ('${{ inputs.skipAzModuleInstallation }}' -ne 'true') {
-            Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
-          }
-        shell: pwsh
-
       - name: Set up Azure CLI
         uses: azure/login@v1
         with:
