@@ -1,3 +1,7 @@
+- name: Install Az PowerShell module
+      run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force }
+      shell: pwsh
+      
 name: Deploy Logic App to QA
 
 on:
