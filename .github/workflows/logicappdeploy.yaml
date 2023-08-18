@@ -26,16 +26,21 @@ jobs:
           }
         shell: pwsh
 
-      - name: Set up Azure CLI
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: ${{github.event.inputs.subscriptionId}}
-          resourceGroupName: ${{github.event.inputs.resourceGroupName}}
-          template: ./src/LogicappsARM/parameters.json
-          parameters: ./src/LogicappsARM/template.json
+      - name: Deploy Logic App to QA
+        run: |
+          az deployment group create --resource-group TripleApocQA --template-file ${{ github.workspace }}/src/LogicappsARM/template.json --parameters ${{ github.workspace }}/src/LogicappsARM/parameters.json
+           ${{ github.workspace }} represents the core repository where the logic apps ARM templates are stored.
+
+      #- name: Set up Azure CLI
+       # uses: azure/login@v1
+       # with:
+       #   creds: ${{ secrets.AZURE_CREDENTIALS }}
+      #- uses: azure/arm-deploy@v1
+      #  with:
+      #    subscriptionId: ${{github.event.inputs.subscriptionId}}
+      #    resourceGroupName: ${{github.event.inputs.resourceGroupName}}
+      #    template: ./src/LogicappsARM/parameters.json
+      #    parameters: ./src/LogicappsARM/template.json
 
 
 
