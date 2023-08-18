@@ -20,6 +20,9 @@ jobs:
           }
         shell: pwsh
 
+      - name: Clear GitHub Actions workspace
+        run: rm -rf ${{ github.workspace }}/*
+
       - name: Set up Azure CLI
         uses: azure/login@v1
         with:
@@ -28,4 +31,3 @@ jobs:
       - name: Deploy Logic App to QA
         run: |
           pwsh -c "az deployment group create --resource-group TripleApocQA --template-file ${{ github.workspace }}/src/LogicappsARM/template.json --parameters ${{ github.workspace }}/src/LogicappsARM/parameters.json"
-       # ${{ github.workspace }} represents the core repository where the logic apps ARM templates are stored.
