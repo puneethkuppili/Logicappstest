@@ -1,33 +1,35 @@
-name: Deploy Logic App to QA
+# This is a basic workflow to help you get started with Actions
 
+name: Create a Logic App
+
+# Controls when the action will run. 
 on:
-  push:
-    branches:
-      - main
+ workflow_dispatch:
+    inputs:
+      subscriptionId:
+        description: 'SubscriptionId'
+        required: true
+      resourceGroupName:
+        description: 'Resource group name'
+        required: true
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  # This workflow contains a single job called "build"
+  build-and-deploy:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Az PowerShell module
-        run: |
-          if ('${{ inputs.skipAzModuleInstallation }}' -ne 'true') {
-            Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
-          }
-        shell: pwsh
-
-      - name: Clear GitHub Actions workspace
-        run: rm -rf ${{ github.workspace }}/*
-
-      - name: Set up Azure CLI
-        uses: azure/login@v1
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Deploy Logic App to QA
-        run: |
-          pwsh -c "az deployment group create --resource-group TripleApocQA --template-file src/LogicappsARM/template.json --parameters src/LogicappsARM/parameters.json"
+      - uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{github.event.inputs.subscriptionId}}
+          resourceGroupName: ${{github.event.inputs.resourceGroupName}}
+          template: ./ARMTemplates/LA_Standard_Basic.json
+          parameters: ./ARMTemplates/LA_Standard_Basic_Param.json
