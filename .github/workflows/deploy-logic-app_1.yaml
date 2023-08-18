@@ -1,33 +1,39 @@
-name: Deploy Logic App to QA
+#Name of the GitHub Action
+name: Deploy Logic App
 
+#Set the action on which the workflow will trigger
 on:
-  push:
-    branches:
-      - main
+ push:
+   branches:
+     - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  validate-and-deploy:
+   runs-on: ubuntu-latest
+   env:
+     ENV_RESOURCEGROUP: TripleApocQA
+     ENV_RESOURCEGROUPLOCATION: eastus
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+   steps:
 
-      - name: Install Az PowerShell module
-        run: |
-          if ('${{ inputs.skipAzModuleInstallation }}' -ne 'true') {
-            Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
-          }
-        shell: pwsh
+    #Checkout the repository
+    - name: Checkout Repository
+      uses: actions/checkout@master
 
-      - name: Clear GitHub Actions workspace
-        run: rm -rf ${{ github.workspace }}/*
-
-      - name: Set up Azure CLI
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Deploy Logic App to QA
-        run: |
-          pwsh -c "az deployment group create --resource-group TripleApocQA --template-file ${{ github.workspace }}/src/LogicappsARM/template.json --parameters ${{ github.workspace }}/src/LogicappsARM/parameters.json"
+    #Use the azure provided action to log on to azure using service pricipal
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+    
+    #Validate the  ARM template
+    - name: Validate ARM template
+      run: |
+        az deployment group validate -g ${{env.ENV_RESOURCEGROUP}} --mode Incremental --template-file ${{ github.workspace }}/src/LogicappsARM/template.json --parameters ${{ github.workspace }}/src/LogicappsARM/parameters.json
+    
+    #Deploy the ARM Template
+    - name: Deploy Logic App to QA
+      run: |
+        az deployment group create --resource-group TripleApocQA --template-file ${{ github.workspace }}/src/LogicappsARM/template.json --parameters ${{ github.workspace }}/src/LogicappsARM/parameters.json
+          # ${{ github.workspace }} represents the core repository where the logic apps ARM templates are stored.
+      
