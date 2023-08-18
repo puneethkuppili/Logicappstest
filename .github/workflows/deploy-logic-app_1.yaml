@@ -1,4 +1,4 @@
-#Name of the GitHub Action
+#Name of GA
 name: Deploy Logic App
 
 #Set the action on which the workflow will trigger
