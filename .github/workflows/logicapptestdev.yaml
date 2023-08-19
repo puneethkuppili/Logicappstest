@@ -27,7 +27,7 @@ jobs:
       - name: Set up Azure CLI
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }} # Use the appropriate secret based on the environment
+          creds: ${{ secrets.AZURE_CREDENTIALS_QA }} # Use the appropriate secret based on the environment
 
       - name: Deploy Logic App
         run: |
