@@ -1,4 +1,3 @@
-
 name: Deploy Logic App
 
 on:
@@ -21,13 +20,15 @@ jobs:
           }
         shell: pwsh
 
+
+      - name: Clear GitHub Actions workspace
+        run: rm -rf ${{ github.workspace }}/*
+
       - name: Set up Azure CLI
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_QA }} # Use the appropriate secret based on the environment
+          creds: ${{ secrets.AZURE_CREDENTIALS }} # Use the appropriate secret based on the environment
 
       - name: Deploy Logic App
         run: |
           pwsh -c "az deployment group create --resource-group ${{ secrets.RESOURCE_GROUP_QA }} --template-file ${{ github.workspace }}/src/LogicappsARM/template.json --parameters ${{ github.workspace }}/src/LogicappsARM/parameters.json"
-
-
