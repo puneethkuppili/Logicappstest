@@ -20,7 +20,6 @@ jobs:
           }
         shell: pwsh
 
-
       - name: Clear GitHub Actions workspace
         run: rm -rf ${{ github.workspace }}/*
 
@@ -28,6 +27,10 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}} # Use the appropriate secret based on the environment
+
+      - name: Print Directory Contents
+        run: |
+          ls -R ${{ github.workspace }}
 
       - name: Deploy Logic App
         run: |
