@@ -31,4 +31,4 @@ jobs:
 
       - name: Deploy Logic App
         run: |
-          pwsh -c "az deployment group create --resource-group TripleApocQA --template-file Logicappstest/src/LogicappsARM/template.json --parameters Logicappstest/src/LogicappsARM/parameters.json"
+          pwsh -c "az deployment group create --resource-group TripleApocQA --template-file src/LogicappsARM/template.json --parameters src/LogicappsARM/parameters.json"
