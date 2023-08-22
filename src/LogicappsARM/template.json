@@ -20,7 +20,7 @@
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
-            "name": ""[parameters('sites_A4LLogicapp_DEV_name')]"",
+            "name": "parameters('sites_A4LLogicapp_DEV_name')",
             "location": "East US",
             "tags": {
                 "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_A4LLogicapp_DEV_name')))]"
