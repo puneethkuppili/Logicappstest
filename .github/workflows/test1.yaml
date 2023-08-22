@@ -1,0 +1,37 @@
+name: Deploy Logic App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Az PowerShell module
+        run: |
+          if ('${{ inputs.skipAzModuleInstallation }}' -ne 'true') {
+            Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+          }
+        shell: pwsh
+
+      - name: Clear GitHub Actions workspace
+        run: rm -rf ${{ github.workspace }}/*
+
+      - name: Set up Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}} # Use the appropriate secret based on the environment
+
+      - name: Print Directory Contents
+        run: |
+          ls -R ${{ github.workspace }}
+
+      - name: Deploy Logic App
+        run: |
+           pwsh -c "az deployment group create --resource-group TripleApocQA --template-file ${{ github.workspace }}/LogicappsARM/template.json --parameters ${{ github.workspace }}/LogicappsARM/parameters-QA.json"
