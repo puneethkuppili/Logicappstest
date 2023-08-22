@@ -20,10 +20,10 @@
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
-            "name": ""[parameters('sites_a4llogicapp_ENV_name')]"",
+            "name": ""[parameters('sites_A4LLogicapp_DEV_name')]"",
             "location": "East US",
             "tags": {
-                "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_a4llogicapp_ENV_name')))]"
+                "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_A4LLogicapp_DEV_name')))]"
             },
             "kind": "functionapp,workflowapp",
             "identity": {
@@ -76,13 +76,13 @@
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_ENV_name'), '/ftp')]",
+            "name": "[concat(parameters('sites_A4LLogicapp_DEV_name'), '/ftp')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_ENV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_A4LLogicapp_DEV_name'))]"
             ],
             "tags": {
-			    "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_a4llogicapp_ENV_name')))]"
+			    "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_A4LLogicapp_DEV_name')))]"
             },
             "properties": {
                 "allow": true
@@ -91,13 +91,13 @@
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_ENV_name'), '/scm')]",
+            "name": "[concat(parameters('sites_A4LLogicapp_DEV_name'), '/scm')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_ENV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_A4LLogicapp_DEV_name'))]"
             ],
             "tags": {
-			    "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_a4llogicapp_ENV_name')))]"
+			    "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_A4LLogicapp_DEV_name')))]"
             },
             "properties": {
                 "allow": true
@@ -106,13 +106,13 @@
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_ENV_name'), '/web')]",
+            "name": "[concat(parameters('sites_A4LLogicapp_DEV_name'), '/web')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_ENV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_A4LLogicapp_DEV_name'))]"
             ],
             "tags": {
-			    "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_a4llogicapp_ENV_name')))]"
+			    "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_', parameters('environment'), '/providers/Microsoft.Insights/components/', toLower(parameters('sites_A4LLogicapp_DEV_name')))]"
             },
             "properties": {
                 "numberOfWorkers": 1,
@@ -192,10 +192,10 @@
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_ENV_name'), '/', parameters('sites_a4llogicapp_ENV_name'), '.azurewebsites.net')]",
+            "name": "[concat(parameters('sites_A4LLogicapp_DEV_name'), '/', parameters('sites_A4LLogicapp_DEV_name'), '.azurewebsites.net')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_ENV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_A4LLogicapp_DEV_name'))]"
             ],
             "properties": {
                 "siteName": "concat('a4llogicapp-', parameters('environment'))",
