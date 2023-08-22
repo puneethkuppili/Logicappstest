@@ -1,19 +1,18 @@
 {
-"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "sites_A4LLogicapp_DEV_name": {
+            "value": "QA"
+        },
+        "serverfarms_ASP_TriplepocDEV_a01f_externalid": {
+            "value": "/subscriptions/your-subscription-id/resourceGroups/concat('Triplepoc_','[parameters('environment')]','/providers/Microsoft.Web/serverfarms/ASP-Triplepoc','[parameters('environment')]','-a01f'",
+        },
         "environment": {
-            "type": "String"
-        },
-        "sites_a4llogicapp_ENV_name": {
-            "defaultValue": "[concat('a4llogicapp-', parameters('environment'))]",
-            "type": "String"
-        },
-        "serverfarms_ASP_TriplepocENV_a01f_externalid": {
-            "defaultValue": "/subscriptions/your-subscription-id/resourceGroups/Triplepoc_" + "[parameters('environment')]" + "/providers/Microsoft.Web/serverfarms/ASP-Triplepoc" + "[parameters('environment')]" + "-a01f",
-            "type": "String"
+            "value": "QA"
         }
-    },
+    }
+},
     "variables": {
         "env": "[tolower(parameters('environment'))]"
     }
