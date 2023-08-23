@@ -41,6 +41,15 @@ jobs:
         run: |
           ls -R ${{ github.workspace }}/src/LogicappsARM
 
-      - name: Deploy Logic App
-        run: |
-          pwsh -c "az deployment group create --resource-group Tripleapoc_QA --template-file templatetest.json --parameters parameters.json"
+      - uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{github.event.inputs.subscriptionId}}
+          resourceGroupName: ${{github.event.inputs.resourceGroupName}}
+          template: ./src/LogicappsARM/parameters.json
+          parameters: ./src/LogicappsARM/template.json
+
+      #- name: Deploy Logic App
+      #  run: |
+      #   pwsh -c "az deployment group create --resource-group Tripleapoc_QA --template-file templatetest.json --parameters parameters.json"
+
+          
