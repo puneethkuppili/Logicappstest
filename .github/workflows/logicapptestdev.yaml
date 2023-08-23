@@ -13,6 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Enable GitHub Actions Debug Mode
+        run: |
+          echo "##[debug] GitHub Actions Debug Mode Enabled"
+        shell: bash
+
       - name: Install Az PowerShell module
         run: |
           if ('${{ inputs.skipAzModuleInstallation }}' -ne 'true') {
@@ -38,4 +43,4 @@ jobs:
 
       - name: Deploy Logic App
         run: |
-          pwsh -c "az deployment group create --resource-group Tripleapoc_QA --template-file src/LogicappsARM/template.json --parameters src/LogicappsARM/parameters-QA.json"
+          pwsh -c "az deployment group create --resource-group Tripleapoc_QA --template-file Logicappstest/src/LogicappsARM/template.json --parameters Logicappstest/src/LogicappsARM/parameters-QA.json"
