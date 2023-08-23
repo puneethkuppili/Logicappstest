@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_a4llogicapp_DEV_name": {
-            "value": null
+            "value": "a4llogicapp-QA"
         },
         "serverfarms_ASP_TripleapocDEV_bf3d_externalid": {
             "value": null
