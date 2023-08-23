@@ -1,52 +1,41 @@
-name: Deploy Logic App
+# This is a basic workflow to help you get started with Actions
 
+ 
+
+name: Create a Logic App
+
+# Controls when the action will run. 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      subscriptionId:
+        description: '581c5e0c-b29b-4026-aa7f-019b1a1f69c4'
+        required: true
+      resourceGroupName:
+        description: 'Tripleapoc_QA'
+        required: true
 
+ 
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  # This workflow contains a single job called "build"
+  build-and-deploy:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
 
+ 
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Enable GitHub Actions Debug Mode
-        run: |
-          echo "##[debug] GitHub Actions Debug Mode Enabled"
-        shell: bash
-
-      - name: Install Az PowerShell module
-        run: |
-          if ('${{ inputs.skipAzModuleInstallation }}' -ne 'true') {
-            Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
-          }
-        shell: pwsh
-
-      - name: Clear GitHub Actions workspace
-        run: rm -rf ${{ github.workspace }}/*
-
-      - name: Set up Azure CLI
-        uses: azure/login@v1
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: azure/login@v1
         with:
-          creds: ${{secrets.AZURE_CREDENTIALS}} # Use the appropriate secret based on the environment
-
-      - name: Print Directory Contents
-        run: |
-          ls -R ${{ github.workspace }}
-
-
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{github.event.inputs.subscriptionId}}
           resourceGroupName: ${{github.event.inputs.resourceGroupName}}
-          template: ./LogicappsARMTemplates/parameters.json
-          parameters: ./LogicappsARMTemplates/template.json
-
-      #- name: Deploy Logic App
-      #  run: |
-      #   pwsh -c "az deployment group create --resource-group Tripleapoc_QA --template-file templatetest.json --parameters parameters.json"
-
-          
+          template: ./LogicappARMTemplates/template.json
+          parameters: ./LogicappARMTemplates/parameters.json
