@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_A4LLogicapp_DEV_name": {
-            "value": "a4llogicapp-DEV"
+            "value": "a4llogicapp-QA"
         },
         "serverfarms_ASP_TriplepocDEV_a01f_externalid": {
-            "value": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Web/serverfarms/ASP-TripleapocDEV-bf3d"
+            "value": null
         }
     }
 }
