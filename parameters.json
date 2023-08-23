@@ -1,15 +1,12 @@
- {
+{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_A4LLogicapp_DEV_name": {
-            "value": "a4llogicapp-DEV"
+            "value": null
         },
         "serverfarms_ASP_TriplepocDEV_a01f_externalid": {
-            "value": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Triplepoc_DEV/providers/Microsoft.Web/serverfarms/ASP-Triplepoc_DEV-a01f'",
-        },
-        "environment": {
-            "value": "DEV"
+            "value": null
         }
     }
- }
+}
