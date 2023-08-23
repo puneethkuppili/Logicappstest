@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_a4llogicapp_DEV_name": {
-            "value": a4llogicapp-QA
+            "value": "a4llogicapp-QA"
         },
         "serverfarms_ASP_TripleapocDEV_bf3d_externalid": {
             "value": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_QA/providers/Microsoft.Web/serverfarms/ASP-TripleapocQA-bf3d"
