@@ -36,6 +36,6 @@ jobs:
             with:
               subscriptionId: ${{github.event.inputs.subscriptionId}}
               resourceGroupName: ${{github.event.inputs.resourceGroupName}}
-              template: ./LogicappARMTemplates/template.json
-              parameters: ./LogicappARMTemplates/parameters.json
+              template: ./LogicappARMTemplates/template/template.json
+              parameters: ./LogicappARMTemplates/parameters/parameters.json
           done
