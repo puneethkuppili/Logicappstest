@@ -19,7 +19,7 @@
             "name": "[parameters('sites_a4llogicapp_DEV_name')]",
             "location": "East US",
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "kind": "functionapp,workflowapp",
             "identity": {
@@ -78,7 +78,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "properties": {
                 "allow": true
@@ -93,7 +93,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "properties": {
                 "allow": true
@@ -108,7 +108,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "properties": {
                 "numberOfWorkers": 1,
