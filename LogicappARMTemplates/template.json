@@ -71,7 +71,7 @@
         },
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2022-12-13",
             "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/ftp')]", 
             "location": "East US",
             "dependsOn": [
@@ -86,7 +86,7 @@
         },
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2022-12-13",
             "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/scm')]",
             "location": "East US",
             "dependsOn": [
@@ -101,7 +101,7 @@
         },
         {
             "type": "Microsoft.Web/sites/config",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2022-12-13",
             "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/web')]",
             "location": "East US",
             "dependsOn": [
@@ -187,7 +187,7 @@
         },
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2022-12-13",
             "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/', parameters('sites_a4llogicapp_DEV_name'), '.azurewebsites.net')]",
             "location": "East US",
             "dependsOn": [
