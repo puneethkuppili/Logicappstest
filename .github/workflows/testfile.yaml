@@ -25,7 +25,7 @@ jobs:
       - name: Get ARM templates
         run: |
           echo "Getting ARM templates..."
-          ls ./arm-templates
+          ls ./LogicappARMTemplates
 
       - name: Migrate ARM templates
         run: |
