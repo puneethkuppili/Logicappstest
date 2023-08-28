@@ -6,8 +6,8 @@
             "defaultValue": "a4llogicapp-DEV",
             "type": "String"
         },
-        "serverfarms_ASP_TripleapocDEV_bf3d_externalid": {
-            "defaultValue": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Web/serverfarms/ASP-TripleapocDEV-bf3d",
+        "serverfarms_ASP_TripleapocDEV_89aa_externalid": {
+            "defaultValue": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Web/serverfarms/ASP-TripleapocDEV-89aa",
             "type": "String"
         }
     },
@@ -19,7 +19,7 @@
             "name": "[parameters('sites_a4llogicapp_DEV_name')]",
             "location": "East US",
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "kind": "functionapp,workflowapp",
             "identity": {
@@ -39,7 +39,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('serverfarms_ASP_TripleapocDEV_bf3d_externalid')]",
+                "serverFarmId": "[parameters('serverfarms_ASP_TripleapocDEV_89aa_externalid')]",
                 "reserved": false,
                 "isXenon": false,
                 "hyperV": false,
@@ -59,7 +59,7 @@
                 "clientCertEnabled": false,
                 "clientCertMode": "Required",
                 "hostNamesDisabled": false,
-                "customDomainVerificationId": "E254F9FC87F7A38AC8E3236C31C5CB6BDAC39C9D9E584F56FAC3BCCEF7548F11",
+                "customDomainVerificationId": "21C43142DAD7FD50DA4227CC7F8F4024728939BE777CFEF77783F912DDC5B54E",
                 "containerSize": 1536,
                 "dailyMemoryTimeQuota": 0,
                 "httpsOnly": true,
@@ -72,13 +72,13 @@
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/ftp')]",
+            "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/ftp')]", 
             "location": "East US",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "properties": {
                 "allow": true
@@ -93,7 +93,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "properties": {
                 "allow": true
@@ -108,7 +108,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_QA/providers/Microsoft.Insights/components/a4llogicapp-QA"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
             },
             "properties": {
                 "numberOfWorkers": 1,
@@ -154,7 +154,7 @@
                     "supportCredentials": false
                 },
                 "localMySqlEnabled": false,
-                "managedServiceIdentityId": 8405,
+                "managedServiceIdentityId": 2567,
                 "ipSecurityRestrictions": [
                     {
                         "ipAddress": "Any",
