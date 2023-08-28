@@ -15,7 +15,7 @@
     "resources": [
         {
             "type": "Microsoft.Web/sites",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2022-12-13",
             "name": "[parameters('sites_a4llogicapp_DEV_name')]",
             "location": "East US",
             "tags": {
