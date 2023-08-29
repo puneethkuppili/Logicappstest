@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@main
       - uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_QA}}
+          creds: ${{ secrets.DEV_SECRET }}
       - uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{github.event.inputs.subscriptionId}}
