@@ -31,16 +31,13 @@ jobs:
 
       - name: Migrate ARM templates
         run: |
-          echo "Migrating ARM templates..."
-          for template in $(ls ./LogicappARMTemplates); do
-            echo "Migrating $template..."
             azure/arm-deploy@v1
             with:
               subscriptionId: ${{github.event.inputs.subscriptionId}}
               resourceGroupName: ${{github.event.inputs.resourceGroupName}}
               template: ./LogicappARMTemplates/template.json
               parameters: ./LogicappARMTemplates/parameters.json
-          done
+          
 
        
 
