@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       subscriptionId:
-        description: 'Azure Subscription ID'
+        description: '9eb9892d-4d82-4c17-a21c-f37555c98487'
         required: true
       resourceGroupName:
-        description: 'Resource Group Name'
+        description: 'Tripleapoc_QA'
         required: true
 
 jobs:
@@ -22,19 +22,16 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+ 
       - name: Get ARM templates
         run: |
           echo "Getting ARM templates..."
           ls ./LogicappARMTemplates
-
       - name: Migrate ARM templates
         run: |
-          echo "Migrating ARM templates..."
-          cd /opt/hostedtoolcache/node/16.20.2/x64/bin
-          ls
-          azure/arm-deploy@v1
-          with:
-            subscriptionId: ${{github.event.inputs.subscriptionId}}
-            resourceGroupName: ${{github.event.inputs.resourceGroupName}}
-            template: ./LogicappARMTemplates/template.json
-            parameters: ./LogicappARMTemplates/parameters.json
+            azure/arm-deploy@v1
+            with:
+              subscriptionId: ${{github.event.inputs.subscriptionId}}
+              resourceGroupName: ${{github.event.inputs.resourceGroupName}}
+              template: ./LogicappARMTemplates/template.json
+              parameters: ./LogicappARMTemplates/parameters.json
