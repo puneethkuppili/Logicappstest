@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_a4llogicapp_DEV_name": {
+            "value": "a4llogicappQA"
+        },
+        "serverfarms_ASP_TripleapocDEV_89aa_externalid": {
+            "value": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_QA/providers/Microsoft.Web/serverFarms/ASP-TripleapocQA-89aa"
+        }
+    }
+}
