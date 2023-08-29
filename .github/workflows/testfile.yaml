@@ -1,3 +1,4 @@
+
 name: Migrate Logic Apps
 
 on:
@@ -32,6 +33,11 @@ jobs:
           echo "Migrating ARM templates..."
           for template in $(ls ./LogicappARMTemplates); do
             echo "Migrating $template..."
+           - name: Install azure/arm-deploy@v1
+             uses: actions/setup-node@v2
+             with:
+                   node-version: '16'
+                   registry-url: 'https://npm.pkg.github.com'
             azure/arm-deploy@v1
             with:
               subscriptionId: ${{github.event.inputs.subscriptionId}}
