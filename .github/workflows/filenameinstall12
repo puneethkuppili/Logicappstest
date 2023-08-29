@@ -1,0 +1,3 @@
+- name: List contents of directory
+  run: |
+    ls /opt/hostedtoolcache/node/16.20.2/x64/bin
