@@ -15,7 +15,7 @@ jobs:
       - name: Deploy Logic App
         env:
           NPM_CONFIG_USERCONFIG: /home/runner/work/<workspace>/.npmrc
-        run: |
+        run:  
           azure/arm-deploy@v1
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
