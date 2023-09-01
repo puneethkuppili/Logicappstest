@@ -9,7 +9,7 @@ on:
         description: '9eb9892d-4d82-4c17-a21c-f37555c98487'
         required: true
       resourceGroupName:
-        description: 'Tripleapoc_QA'
+        description: 'Tripleapoc_DEV'
         required: true
 
  
