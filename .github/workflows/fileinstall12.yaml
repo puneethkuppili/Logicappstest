@@ -19,6 +19,6 @@ jobs:
           azure/arm-deploy@v1
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-            resourceGroupName: YourResourceGroupName
+            resourceGroupName: "Tripleapoc_QA"
             template: ./LogicappARMTemplates/template.json
             parameters: ./LogicappARMTemplates/parameters.json
