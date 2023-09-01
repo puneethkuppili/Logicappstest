@@ -1,7 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
- 
-
 name: Create a Logic App
 
 
@@ -10,10 +6,10 @@ on:
   workflow_dispatch:
     inputs:
       subscriptionId:
-        description: '9eb9892d-4d82-4c17-a21c-f37555c98487'
+        description: '581c5e0c-b29b-4026-aa7f-019b1a1f69c4'
         required: true
       resourceGroupName:
-        description: 'Tripleapoc_DEV'
+        description: 'Tripleapoc_QA'
         required: true
 
  
