@@ -11,13 +11,14 @@ jobs:
     steps:
       - name: Install azure-actions-arm-deploy
         run: npm install -g azure-actions-arm-deploy
+
       - name: Deploy Logic App
         env:
           NPM_CONFIG_USERCONFIG: /home/runner/work/<workspace>/.npmrc
-          run: azure/arm-deploy@v1
+        run: |
+          azure/arm-deploy@v1
           with:
-              subscriptionId: 
-              resourceGroupName:
-              template: ./LogicappARMTemplates/template.json
-              parameters: ./LogicappARMTemplates/parameters.json
-        shell: /usr/bin/bash -e {0}
+            subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            resourceGroupName: YourResourceGroupName
+            template: ./LogicappARMTemplates/template.json
+            parameters: ./LogicappARMTemplates/parameters.json
