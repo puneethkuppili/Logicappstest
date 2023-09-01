@@ -14,7 +14,7 @@ jobs:
 
       - name: Deploy Logic App
         env:
-          NPM_CONFIG_USERCONFIG: /home/runner/work/<workspace>/.npmrc
+          NPM_CONFIG_USERCONFIG: /home/runner/work/LogicappARMTemplates/.npmrc
         run:  
           azure/arm-deploy@v1
           with:
