@@ -12,13 +12,4 @@ jobs:
       - name: Install azure-actions-arm-deploy
         run: npm install -g azure-actions-arm-deploy
 
-      - name: Deploy Logic App
-        env:
-          NPM_CONFIG_USERCONFIG: /home/runner/work/LogicappARMTemplates/.npmrc
-        run:  
-          azure/arm-deploy@v1
-          with:
-            subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-            resourceGroupName: "Tripleapoc_QA"
-            template: ./LogicappARMTemplates/template.json
-            parameters: ./LogicappARMTemplates/parameters.json
+
