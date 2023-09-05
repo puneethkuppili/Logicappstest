@@ -28,7 +28,7 @@ jobs:
           echo "Getting ARM templates..."
           ls ./LogicappARMTemplates
       - name: Migrate ARM templates
-        uses: azure/arm-deploy@v1
+        uses: azure/arm-deploy@v4
         with:
               subscriptionId: ${{github.event.inputs.subscriptionId}}
               resourceGroupName: ${{github.event.inputs.resourceGroupName}}
