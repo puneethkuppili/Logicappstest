@@ -29,8 +29,8 @@ jobs:
       # define required arguments for AZ CLI command 
         env:
           RESOURCE_GROUP: Tripleapoc_QA
-          TEMPLATEFILE: template.json
-          PARAMETERSFILE: parameters.json      
+          TEMPLATEFILE: ./LogicappARMTemplates/template.json
+          PARAMETERSFILE: ./LogicappARMTemplates/parameters.json      
         uses: azure/CLI@v1
         with:
       # Execute AZ CLI command
