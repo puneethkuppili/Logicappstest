@@ -2,8 +2,7 @@ on:
   push:
     branches:
       - 'main'
-    paths:
-      - 'app-service.parameters.json'
+
 name: Web App Creation
 jobs:
     build-and-deploy:
@@ -24,8 +23,8 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          template: ././src/app-service.json
-          parameters: ././app-service.parameters.json
+          template: ././LogicappARMTemplates/template.json
+          parameters: ././LogicappARMTemplates/parameters.json 
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
