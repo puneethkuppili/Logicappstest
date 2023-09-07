@@ -35,17 +35,7 @@ jobs:
               template: ./LogicappARMTemplates/template.json
               parameters: ./LogicappARMTemplates/parameters.json
 
-      - name: Deploy ARM Template
-      # define required arguments for AZ CLI command 
-        env:
-          RESOURCE_GROUP: Tripleapoc_QA
-          TEMPLATEFILE: ./LogicappARMTemplates/template.json
-          PARAMETERSFILE: ./LogicappARMTemplates/parameters.json      
-        uses: azure/CLI@v1
-        with:
-      # Execute AZ CLI command
-          inlineScript: |
-            az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
+     
 
 
           
