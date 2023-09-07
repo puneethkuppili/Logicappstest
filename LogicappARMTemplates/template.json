@@ -2,12 +2,12 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "sites_a4llogicapp_DEV_name": {
-            "defaultValue": "a4llogicapp-DEV",
+        "sites_a4llogicappdev_name": {
+            "defaultValue": "a4llogicappdev",
             "type": "String"
         },
-        "serverfarms_ASP_TripleapocDEV_89aa_externalid": {
-            "defaultValue": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Web/serverfarms/ASP-TripleapocDEV-89aa",
+        "serverfarms_ASP_All4labelPOC_a20b_externalid": {
+            "defaultValue": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/All4label-POC/providers/Microsoft.Web/serverfarms/ASP-All4labelPOC-a20b",
             "type": "String"
         }
     },
@@ -16,10 +16,10 @@
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
-            "name": "[parameters('sites_a4llogicapp_DEV_name')]",
+            "name": "[parameters('sites_a4llogicappdev_name')]",
             "location": "East US",
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "kind": "functionapp,workflowapp",
             "identity": {
@@ -29,17 +29,17 @@
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "a4llogicapp-dev.azurewebsites.net",
+                        "name": "[concat(parameters('sites_a4llogicappdev_name'), '.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Standard"
                     },
                     {
-                        "name": "a4llogicapp-dev.scm.azurewebsites.net",
+                        "name": "[concat(parameters('sites_a4llogicappdev_name'), '.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('serverfarms_ASP_TripleapocDEV_89aa_externalid')]",
+                "serverFarmId": "[parameters('serverfarms_ASP_All4labelPOC_a20b_externalid')]",
                 "reserved": false,
                 "isXenon": false,
                 "hyperV": false,
@@ -59,7 +59,7 @@
                 "clientCertEnabled": false,
                 "clientCertMode": "Required",
                 "hostNamesDisabled": false,
-                "customDomainVerificationId": "21C43142DAD7FD50DA4227CC7F8F4024728939BE777CFEF77783F912DDC5B54E",
+                "customDomainVerificationId": "53F487AC7687D0FA08827A5C1CB71B65A1D1D8D49342EAB3E52CBC946A0E221E",
                 "containerSize": 1536,
                 "dailyMemoryTimeQuota": 0,
                 "httpsOnly": true,
@@ -72,13 +72,13 @@
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/ftp')]", 
+            "name": "[concat(parameters('sites_a4llogicappdev_name'), '/ftp')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "properties": {
                 "allow": true
@@ -87,13 +87,13 @@
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/scm')]",
+            "name": "[concat(parameters('sites_a4llogicappdev_name'), '/scm')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "properties": {
                 "allow": true
@@ -102,13 +102,13 @@
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/web')]",
+            "name": "[concat(parameters('sites_a4llogicappdev_name'), '/web')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/9eb9892d-4d82-4c17-a21c-f37555c98487/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicapp-DEV"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "properties": {
                 "numberOfWorkers": 1,
@@ -125,11 +125,12 @@
                 "netFrameworkVersion": "v6.0",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2019",
                 "httpLoggingEnabled": false,
                 "acrUseManagedIdentityCreds": false,
                 "logsDirectorySizeLimit": 35,
                 "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "$a4llogicapp-DEV",
+                "publishingUsername": "$a4llogicappdev",
                 "scmType": "None",
                 "use32BitWorkerProcess": false,
                 "webSocketsEnabled": false,
@@ -154,7 +155,7 @@
                     "supportCredentials": false
                 },
                 "localMySqlEnabled": false,
-                "managedServiceIdentityId": 2567,
+                "managedServiceIdentityId": 25777,
                 "ipSecurityRestrictions": [
                     {
                         "ipAddress": "Any",
@@ -188,13 +189,13 @@
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicapp_DEV_name'), '/', parameters('sites_a4llogicapp_DEV_name'), '.azurewebsites.net')]",
+            "name": "[concat(parameters('sites_a4llogicappdev_name'), '/', parameters('sites_a4llogicappdev_name'), '.azurewebsites.net')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicapp_DEV_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "properties": {
-                "siteName": "a4llogicapp-DEV",
+                "siteName": "a4llogicappdev",
                 "hostNameType": "Verified"
             }
         }
