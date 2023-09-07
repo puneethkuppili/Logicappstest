@@ -125,6 +125,7 @@
                 "netFrameworkVersion": "v6.0",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2019",
                 "httpLoggingEnabled": false,
                 "acrUseManagedIdentityCreds": false,
                 "logsDirectorySizeLimit": 35,
@@ -180,7 +181,7 @@
                 "ftpsState": "FtpsOnly",
                 "preWarmedInstanceCount": 1,
                 "functionAppScaleLimit": 0,
-                "functionsRuntimeScaleMonitoringEnabled": true,
+                "functionsRuntimeScaleMonitoringEnabled": false,
                 "minimumElasticInstanceCount": 1,
                 "azureStorageAccounts": {}
             }
