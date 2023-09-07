@@ -35,6 +35,18 @@ jobs:
               template: ./LogicappARMTemplates/template.json
               parameters: ./LogicappARMTemplates/parameters.json
 
+      - name: List Resource Groups Before Deployment
+        run: az group list --output table
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+        # ... (ARM template deployment steps)
+
+      - name: List Resource Groups After Deployment
+        run: az group list --output table
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
      
 
 
