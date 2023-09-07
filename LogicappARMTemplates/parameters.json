@@ -6,7 +6,7 @@
             "value": "a4llogicappqa"
         },
         "serverfarms_ASP_All4labelPOC_a20b_externalid": {
-            "value": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/All4label-POC/providers/Microsoft.Web/serverfarms/ASP-All4labelPOC-a20b"
+            "value": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_QA/providers/Microsoft.Web/serverfarms/ASP-All4labelPOC-a20b"
         }
     }
 }
