@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_a4llogicappdev_name": {
-            "value": null
+            "value": a4llogicappqa
         },
         "serverfarms_ASP_All4labelPOC_a20b_externalid": {
             "value": null
