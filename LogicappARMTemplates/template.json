@@ -6,8 +6,8 @@
             "defaultValue": "a4llogicappdev",
             "type": "String"
         },
-        "serverfarms_ASP_All4labelPOC_a20b_externalid": {
-            "defaultValue": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/All4label-POC/providers/Microsoft.Web/serverfarms/ASP-All4labelPOC-a20b",
+        "serverfarms_ASP_All4labelPOCdev_externalid": {
+            "defaultValue": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Web/serverfarms/ASP-All4labelPOCdev",
             "type": "String"
         }
     },
@@ -19,7 +19,7 @@
             "name": "[parameters('sites_a4llogicappdev_name')]",
             "location": "East US",
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
             },
             "kind": "functionapp,workflowapp",
             "identity": {
@@ -39,7 +39,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('serverfarms_ASP_All4labelPOC_a20b_externalid')]",
+                "serverFarmId": "[parameters('serverfarms_ASP_All4labelPOCdev_externalid')]",
                 "reserved": false,
                 "isXenon": false,
                 "hyperV": false,
@@ -78,7 +78,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
             },
             "properties": {
                 "allow": true
@@ -93,7 +93,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
             },
             "properties": {
                 "allow": true
@@ -108,7 +108,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
             },
             "properties": {
                 "numberOfWorkers": 1,
@@ -125,7 +125,6 @@
                 "netFrameworkVersion": "v6.0",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
-                "remoteDebuggingVersion": "VS2019",
                 "httpLoggingEnabled": false,
                 "acrUseManagedIdentityCreds": false,
                 "logsDirectorySizeLimit": 35,
@@ -155,7 +154,7 @@
                     "supportCredentials": false
                 },
                 "localMySqlEnabled": false,
-                "managedServiceIdentityId": 25777,
+                "managedServiceIdentityId": 9745,
                 "ipSecurityRestrictions": [
                     {
                         "ipAddress": "Any",
@@ -181,7 +180,7 @@
                 "ftpsState": "FtpsOnly",
                 "preWarmedInstanceCount": 1,
                 "functionAppScaleLimit": 0,
-                "functionsRuntimeScaleMonitoringEnabled": false,
+                "functionsRuntimeScaleMonitoringEnabled": true,
                 "minimumElasticInstanceCount": 1,
                 "azureStorageAccounts": {}
             }
