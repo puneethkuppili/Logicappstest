@@ -34,6 +34,7 @@ jobs:
               resourceGroupName: ${{github.event.inputs.resourceGroupName}}
               template: ./LogicappARMTemplates/template.json
               parameters: ./LogicappARMTemplates/parameters.json
+              failOnStdErr: true
 
       - name: List Resource Groups Before Deployment
         run: az group list --output table
