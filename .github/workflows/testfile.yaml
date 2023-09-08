@@ -21,6 +21,7 @@ jobs:
         uses: azure/login@v1.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
 
  
       - name: Get ARM templates
