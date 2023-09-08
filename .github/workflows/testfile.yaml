@@ -48,6 +48,19 @@ jobs:
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Export Logic App from DEV
+        run: |
+          az logic workflow export --name a4llogicappdev --resource-group DEVRG --output-file exported_logicapp.json
+
+      - name: Import Logic App into PROD
+        run: |
+          # Use Azure PowerShell or Azure CLI to import Logic App into PROD
+          # Example:
+          az logic workflow create --name a4llogicappqa --resource-group Tripleapoc_QA --definition @exported_logicapp.json
+
+
+
+
      
 
 
