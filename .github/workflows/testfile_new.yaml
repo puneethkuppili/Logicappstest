@@ -1,0 +1,27 @@
+name: Migrate Logic Apps
+
+on:
+  workflow_dispatch:
+    inputs:
+      subscriptionId:
+        description: 'd6376798-ade5-4b19-b744-02fe1939dd9e'
+        required: true
+      resourceGroupName:
+        description: 'Tripleapoc_QA'
+        required: true
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+
+      - name: Azure Login
+        uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Import Logic App into PROD
+        run: |
+          az logicapp workflow create --name a4llogicappqa --resource-group ${{github.event.inputs.resourceGroupName}} --definition @workflow.json
