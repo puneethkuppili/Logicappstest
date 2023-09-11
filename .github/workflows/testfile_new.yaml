@@ -19,10 +19,7 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
-      - name: Import Logic App into PROD
-        run: |
-          az extension add --name logicapp
 
       - name: Import Logic App into PROD
         run: |
-          az logicapp workflow create --name a4llogicappqa --resource-group ${{github.event.inputs.resourceGroupName}} --definition @workflow.json
+          az logic workflow create --definition "workflow.json" --location "eastus" --name "a4llogicappqa" --resource-group "Tripleapoc_QA"
