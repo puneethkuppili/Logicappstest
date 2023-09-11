@@ -31,7 +31,7 @@ jobs:
          cp 'workflow.json' 'output/'
          #cp 'parameters.json' 'output/'
          #cp 'connections.json' 'output/'
-         mrdir Stateful
+         mkdir Stateful
          cp -r 'Stateful' 'output/'
          
       - name: Easy Zip Files
