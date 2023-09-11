@@ -26,18 +26,18 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
 
-      - name: Get publish Profile
-        id: fncapp
-        uses: azure/powershell@v1
-        with:
-         azPSVersion: latest
-         inlineScript: |
-          $profile = Get-AzWebAppPublishingProfile `
-              -ResourceGroupName ${{github.event.inputs.ResourceGroupName}} `
-              -Name ${{github.event.inputs.LogicAppName}}
-          $profile = $profile.Replace("`r", "").Replace("`n", "")
-          Write-Output "::set-output name=profile::$profile"
-           cp 'parameters.json' 'output/'
+      # - name: Get publish Profile
+      #   id: fncapp
+      #   uses: azure/powershell@v1
+      #   with:
+      #    azPSVersion: latest
+      #    inlineScript: |
+      #     $profile = Get-AzWebAppPublishingProfile `
+      #         -ResourceGroupName ${{github.event.inputs.ResourceGroupName}} `
+      #         -Name ${{github.event.inputs.LogicAppName}}
+      #     $profile = $profile.Replace("`r", "").Replace("`n", "")
+      #     Write-Output "::set-output name=profile::$profile"
+      #      cp 'parameters.json' 'output/'
 
 
       - name: Create project folder
@@ -63,4 +63,4 @@ jobs:
         with:
          app-name: ${{github.event.inputs.LogicAppName}}
          package: '${{ github.run_id }}.zip'
-         publish-profile: ${{steps.fncapp.outputs.profile}}  
+        #  publish-profile: ${{steps.fncapp.outputs.profile}}  
