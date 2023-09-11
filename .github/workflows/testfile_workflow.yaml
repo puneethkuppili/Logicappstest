@@ -1,0 +1,63 @@
+name: Migrate Logic Apps
+
+on:
+  workflow_dispatch:
+    inputs:
+      subscriptionId:
+        description: 'd6376798-ade5-4b19-b744-02fe1939dd9e'
+        required: true
+      resourceGroupName:
+        description: 'Tripleapoc_QA'
+        required: true
+
+jobs:
+  migrate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+
+      - name: Azure Login
+        uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+
+      - name: Get publish Profile
+        id: fncapp
+        uses: azure/powershell@v1
+        with:
+         azPSVersion: latest
+         inlineScript: |
+          $profile = Get-AzWebAppPublishingProfile `
+              -ResourceGroupName ${{github.event.inputs.ResourceGroupName}} `
+              -Name ${{github.event.inputs.LogicAppName}}
+          $profile = $profile.Replace("`r", "").Replace("`n", "")
+          Write-Output "::set-output name=profile::$profile"
+           cp 'parameters.json' 'output/'
+
+
+      - name: Create project folder
+        run: |
+         mkdir output
+         cp 'template.json' 'output/'
+         cp 'parameters.json' 'output/'
+         #cp 'connections.json' 'output/'
+         
+
+ 
+
+      - name: Easy Zip Files
+        uses: vimtor/action-zip@v1
+        with:
+         dest: '${{ github.run_id }}.zip'
+         files: output/
+
+
+      - name: 'Run Azure Functions Action'
+        uses: Azure/functions-action@v1
+        id: fa
+        with:
+         app-name: ${{github.event.inputs.LogicAppName}}
+         package: '${{ github.run_id }}.zip'
+         publish-profile: ${{steps.fncapp.outputs.profile}}  
