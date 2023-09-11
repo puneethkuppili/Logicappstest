@@ -28,6 +28,11 @@ jobs:
         run: |
           echo "Getting ARM templates..."
           ls ./LogicappARMTemplates
+
+      - name: Import Logic App into PROD
+        run: |
+         az deployment sub delete --name f9b824d83d87446fb0a2624059e9ddf7 --no-wait
+         
       - name: Migrate ARM templates
         uses: azure/arm-deploy@v1
         with:
@@ -48,6 +53,8 @@ jobs:
         run: az group list --output table
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+
 
 
       - name: Import Logic App into PROD
