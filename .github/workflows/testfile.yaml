@@ -51,25 +51,10 @@ jobs:
 
       - name: Import Logic App Workflow
         run: |
-           az logicapp workflow import --resource-group Tripleapoc_QA --workflow-name testflow --definition @"workflow.json"
+           az logic workflow import --resource-group Tripleapoc_QA --workflow-name testflow --definition "workflow.json"
 
 
-    steps:
-      - uses: actions/github-script@v3
-        with:
-          script: |
-            #!/usr/bin/env bash
 
-            source_environment_name="dev"
-            destination_environment_name="prod"
-
-            echo "Importing workflows from $source_environment_name to $destination_environment_name..."
-
-            workflow_definitions_file="workflow_definitions.json"
-
-            export_workflow_definitions_from_dev_environment "$workflow_definitions_file"
-
-            import_workflow_definitions_into_prod_environment "$workflow_definitions_file"
 
 
 
