@@ -1,14 +1,60 @@
+name: Migrate Logic Apps
 
+on:
+  workflow_dispatch:
+    inputs:
+      subscriptionId:
+        description: 'd6376798-ade5-4b19-b744-02fe1939dd9e'
+        required: true
+      resourceGroupName:
+        description: 'Tripleapoc_QA'
+        required: true
 
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
 
+      - name: Azure Login
+        uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
 
-        - name: Import Logic App Workflow
-           run: |
-    az logic workflow import --resource-group <TargetResourceGroup> --name <LogicAppName> --workflow-name <WorkflowName> --workflow-definition @"workflow.json"
-         env:
-    AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-    AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-    AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+ 
+      - name: Get ARM templates
+        run: |
+          echo "Getting ARM templates..."
+          ls ./LogicappARMTemplates
+      - name: Migrate ARM templates
+        uses: azure/arm-deploy@v1
+        with:
+              subscriptionId: ${{github.event.inputs.subscriptionId}}
+              resourceGroupName: ${{github.event.inputs.resourceGroupName}}
+              template: ./LogicappARMTemplates/template.json
+              parameters: ./LogicappARMTemplates/parameters.json
+              
+
+      - name: List Resource Groups Before Deployment
+        run: az group list --output table
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+        # ... (ARM template deployment steps)
+
+      - name: List Resource Groups After Deployment
+        run: az group list --output table
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          
+      - name: Import Logic App Workflow
+        run:  az logic workflow import --resource-group Tripleapoc_QA --name a4llogicappqa --workflow-name testflow --workflow-definition @"workflow.json"
+        env:
+           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
 
 
