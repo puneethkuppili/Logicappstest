@@ -22,4 +22,4 @@ jobs:
 
       - name: Import Logic App into PROD
         run: |
-          az logic workflow create --definition "workflow.json" --location "eastus" --name "a4llogicappqa" --resource-group "Tripleapoc_QA" 
+          az logic workflow import --definition "workflow.json" --location "eastus" --name "a4llogicappqa" --resource-group "Tripleapoc_QA" 
