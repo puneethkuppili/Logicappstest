@@ -1,4 +1,4 @@
-name: Migrate Logic Apps
+name: Migrate Logic Apps test
 
 on:
   workflow_dispatch:
