@@ -9,6 +9,9 @@ on:
       resourceGroupName:
         description: 'Tripleapoc_QA'
         required: true
+      LogicAppName:
+        description: 'a4llogicappqa'
+        required: true
 
 jobs:
   migrate:
