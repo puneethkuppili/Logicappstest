@@ -51,7 +51,7 @@ jobs:
 
       - name: Import Logic App Workflow
         run: |
-           az logic workflow import --resource-group Tripleapoc_QA --workflow-name testflow --definition @"workflow.json"
+           az logicapp workflow import --resource-group Tripleapoc_QA --workflow-name testflow --definition @"workflow.json"
 
 
 
