@@ -1,3 +1,1 @@
-- name: List contents of directory
-  run: |
-    ls /opt/hostedtoolcache/node/16.20.2/x64/bin
+az deployment sub delete --name f9b824d83d87446fb0a2624059e9ddf7 --no-wait
