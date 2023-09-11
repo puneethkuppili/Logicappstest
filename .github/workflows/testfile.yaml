@@ -22,16 +22,11 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
-
  
       - name: Get ARM templates
         run: |
           echo "Getting ARM templates..."
           ls ./LogicappARMTemplates
-
-      - name: Import Logic App into PROD
-        run: |
-         az deployment sub delete --name f9b824d83d87446fb0a2624059e9ddf7 --no-wait
          
       - name: Migrate ARM templates
         uses: azure/arm-deploy@v1
@@ -57,9 +52,7 @@ jobs:
 
 
 
-      - name: Import Logic App into PROD
-        run: |
-          az logic workflow create --definition "workflow.json" --location "eastus" --name "a4llogicappqa" --resource-group "Tripleapoc_QA"
+
 
 
       
