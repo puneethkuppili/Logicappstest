@@ -187,6 +187,25 @@
             }
         },
         {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('sites_a4llogicappdev_name'), '/f9b824d83d87446fb0a2624059e9ddf7')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY_FUNCTIONS_V1",
+                "message": "{\"type\":\"deployment\",\"sha\":\"4110559489873eb8ef943d17522c2c96f3a26bab\",\"repoName\":\"punny1997/Logicappstest\",\"actor\":\"punny1997\",\"slotName\":\"production\"}",
+                "start_time": "2023-09-11T09:34:07.7890031Z",
+                "end_time": "2023-09-11T09:34:18.2016641Z",
+                "active": true
+            }
+        },
+        {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2022-09-01",
             "name": "[concat(parameters('sites_a4llogicappdev_name'), '/', parameters('sites_a4llogicappdev_name'), '.azurewebsites.net')]",
