@@ -48,7 +48,10 @@ jobs:
         run: az group list --output table
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          
+
+      - name: Import Logic App Workflow
+        run: |
+           az logic workflow import --resource-group Tripleapoc_QA --workflow-name testflow --definition @"workflow.json"
 
 
 
