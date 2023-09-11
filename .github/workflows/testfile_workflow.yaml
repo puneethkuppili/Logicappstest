@@ -31,6 +31,7 @@ jobs:
          cp 'workflow.json' 'output/'
          #cp 'parameters.json' 'output/'
          #cp 'connections.json' 'output/'
+         cp -r 'Stateful' 'output/'
          
       - name: Easy Zip Files
         uses: vimtor/action-zip@v1
