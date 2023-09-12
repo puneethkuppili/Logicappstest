@@ -14,6 +14,33 @@
     "variables": {},
     "resources": [
         {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('sites_a4llogicappdev_name')]", // Specify your Logic App name
+            "location": "East US",
+            "dependsOn": [
+                // Add dependencies if needed
+            ],
+            "properties": {
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "actions": {},
+                    "contentVersion": "1.0.0.0",
+                    "outputs": {},
+                    "triggers": {
+                        "When_a_HTTP_request_is_received": {
+                            "kind": "Http",
+                            "type": "Request"
+                        }
+                    }
+                },
+                "state": "Enabled", // Enable the Logic App
+                "accessControl": {
+                    // Add your access control settings if needed
+                }
+            }
+        },
+        {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
             "name": "[parameters('sites_a4llogicappdev_name')]",
@@ -26,23 +53,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-			"definition":
-	            {
-					  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-					  "actions": {},
-					  "contentVersion": "1.0.0.0",
-					  "outputs": {},
-					  "triggers": 
-					       {
-						     "When_a_HTTP_request_is_received": 
-						     {
-								"kind": "Http",
-								"type": "Request"
-						     }
-					        }
-		     },
                 "enabled": true,
-		"kind": "Stateful",
                 "hostNameSslStates": [
                     {
                         "name": "[concat(parameters('sites_a4llogicappdev_name'), '.azurewebsites.net')]",
