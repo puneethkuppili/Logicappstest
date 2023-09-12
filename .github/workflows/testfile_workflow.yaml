@@ -32,7 +32,7 @@ jobs:
          #cp 'parameters.json' 'output/'
          #cp 'connections.json' 'output/'
          mkdir Stateful
-         cp -r 'Stateful' 'output/'
+         
          
       - name: Easy Zip Files
         uses: vimtor/action-zip@v1
