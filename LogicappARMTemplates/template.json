@@ -42,7 +42,7 @@
 					        }
 		     },
                 "enabled": true,
-		"kind": Stateful,
+		"kind": "Stateful",
                 "hostNameSslStates": [
                     {
                         "name": "[concat(parameters('sites_a4llogicappdev_name'), '.azurewebsites.net')]",
