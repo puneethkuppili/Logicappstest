@@ -37,10 +37,8 @@
                 "state": "Enabled", 
                 "sku": {
                          "name": "Standard"
-                       }
-                "accessControl": {
-                   
-                }
+                       },
+                "accessControl": {}
             }
         },
         {
