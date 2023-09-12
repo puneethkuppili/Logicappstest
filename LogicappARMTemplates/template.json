@@ -16,10 +16,10 @@
         {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "[parameters('sites_a4llogicappdev_name')]", // Specify your Logic App name
+            "name": "[parameters('sites_a4llogicappdev_name')]",
             "location": "East US",
             "dependsOn": [
-                // Add dependencies if needed
+            
             ],
             "properties": {
                 "definition": {
@@ -34,9 +34,9 @@
                         }
                     }
                 },
-                "state": "Enabled", // Enable the Logic App
+                "state": "Enabled", 
                 "accessControl": {
-                    // Add your access control settings if needed
+                   
                 }
             }
         },
