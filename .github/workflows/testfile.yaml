@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       subscriptionId:
-        description: 'd6376798-ade5-4b19-b744-02fe1939dd9e'
+        description: '581c5e0c-b29b-4026-aa7f-019b1a1f69c4'
         required: true
       resourceGroupName:
         description: 'Tripleapoc_QA'
