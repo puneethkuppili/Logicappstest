@@ -6,8 +6,8 @@
             "defaultValue": "a4llogicappdev",
             "type": "String"
         },
-        "serverfarms_ASP_All4labelPOCdev_externalid": {
-            "defaultValue": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Web/serverfarms/ASP-All4labelPOCdev",
+        "serverfarms_ASP_All4labeltripleapoc_externalid": {
+            "defaultValue": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Web/serverfarms/ASP-All4labeltripleapoc",
             "type": "String"
         }
     },
@@ -15,7 +15,7 @@
     "resources": [
         {
             "type": "Microsoft.Logic/workflows",
-            "apiVersion": "2019-05-01",
+            "apiVersion": "2017-07-01",
             "name": "[parameters('sites_a4llogicappdev_name')]",
             "location": "East US",
             "dependsOn": [],
@@ -43,7 +43,7 @@
             "name": "[parameters('sites_a4llogicappdev_name')]",
             "location": "East US",
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "kind": "functionapp,workflowapp",
             "identity": {
@@ -63,7 +63,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('serverfarms_ASP_All4labelPOCdev_externalid')]",
+                "serverFarmId": "[parameters('serverfarms_ASP_All4labeltripleapoc_externalid')]",
                 "reserved": false,
                 "isXenon": false,
                 "hyperV": false,
@@ -83,7 +83,7 @@
                 "clientCertEnabled": false,
                 "clientCertMode": "Required",
                 "hostNamesDisabled": false,
-                "customDomainVerificationId": "53F487AC7687D0FA08827A5C1CB71B65A1D1D8D49342EAB3E52CBC946A0E221E",
+                "customDomainVerificationId": "E254F9FC87F7A38AC8E3236C31C5CB6BDAC39C9D9E584F56FAC3BCCEF7548F11",
                 "containerSize": 1536,
                 "dailyMemoryTimeQuota": 0,
                 "httpsOnly": true,
@@ -102,7 +102,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "properties": {
                 "allow": true
@@ -117,7 +117,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "properties": {
                 "allow": true
@@ -132,7 +132,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
             ],
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/d6376798-ade5-4b19-b744-02fe1939dd9e/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev20230907170"
+                "hidden-link: /app-insights-resource-id": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_DEV/providers/Microsoft.Insights/components/a4llogicappdev"
             },
             "properties": {
                 "numberOfWorkers": 1,
@@ -149,7 +149,6 @@
                 "netFrameworkVersion": "v6.0",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
-                "remoteDebuggingVersion": "VS2019",
                 "httpLoggingEnabled": false,
                 "acrUseManagedIdentityCreds": false,
                 "logsDirectorySizeLimit": 35,
@@ -179,7 +178,7 @@
                     "supportCredentials": false
                 },
                 "localMySqlEnabled": false,
-                "managedServiceIdentityId": 9745,
+                "managedServiceIdentityId": 10336,
                 "ipSecurityRestrictions": [
                     {
                         "ipAddress": "Any",
@@ -205,28 +204,9 @@
                 "ftpsState": "FtpsOnly",
                 "preWarmedInstanceCount": 1,
                 "functionAppScaleLimit": 0,
-                "functionsRuntimeScaleMonitoringEnabled": false,
+                "functionsRuntimeScaleMonitoringEnabled": true,
                 "minimumElasticInstanceCount": 1,
                 "azureStorageAccounts": {}
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_a4llogicappdev_name'), '/f9b824d83d87446fb0a2624059e9ddf7')]",
-            "location": "East US",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_a4llogicappdev_name'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "N/A",
-                "deployer": "GITHUB_ZIP_DEPLOY_FUNCTIONS_V1",
-                "message": "{\"type\":\"deployment\",\"sha\":\"4110559489873eb8ef943d17522c2c96f3a26bab\",\"repoName\":\"punny1997/Logicappstest\",\"actor\":\"punny1997\",\"slotName\":\"production\"}",
-                "start_time": "2023-09-11T09:34:07.7890031Z",
-                "end_time": "2023-09-11T09:34:18.2016641Z",
-                "active": true
             }
         },
         {
