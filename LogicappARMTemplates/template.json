@@ -33,6 +33,9 @@
                     }
                 },
                 "state": "Enabled",
+                "sku": {
+                    "name": "Standard"
+                },
                 "accessControl": {}
             },
             "kind": "Stateful"
