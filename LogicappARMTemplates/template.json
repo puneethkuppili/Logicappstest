@@ -32,13 +32,10 @@
                         }
                     }
                 },
+                "kind": "Stateful",
                 "state": "Enabled",
-                "sku": {
-                    "name": "Standard"
-                },
                 "accessControl": {}
-            },
-            "kind": "Stateful"
+            }
         },
         {
             "type": "Microsoft.Web/sites",
