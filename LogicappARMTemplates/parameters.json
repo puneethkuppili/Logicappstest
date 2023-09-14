@@ -6,7 +6,7 @@
             "value": "a4llogicappqa"
         },
         "serverfarms_ASP_All4labeltripleapoc_externalid": {
-            "value": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_QA/providers/Microsoft.Web/serverfarms/ASP-All4labeltripleapoc"
+            "value": "/subscriptions/581c5e0c-b29b-4026-aa7f-019b1a1f69c4/resourceGroups/Tripleapoc_QA/providers/Microsoft.Web/serverfarms/ASP-All4labeltripleapocqa"
         }
     }
 }
