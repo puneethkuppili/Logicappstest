@@ -22,7 +22,6 @@
                 "name": "Standard_LRS",
                 "tier": "Standard"
             },
-            "kind": "Standard",
             "dependsOn": [
             ],
             "properties": {
