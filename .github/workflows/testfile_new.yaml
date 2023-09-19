@@ -18,14 +18,14 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Export Logic App workflow from DEV resource group
-        uses: microsoft/logicapps-action@v1
+        uses: azure/logicapps-action@v1
         with:
           action-name: export-logic-app
           resource-group: Tripleapoc_DEV
           logic-app-name: a4llogicappdev
 
       - name: Import Logic App workflow to QA resource group
-        uses: microsoft/logicapps-action@v1
+        uses: azure/logicapps-action@v1
         with:
           action-name: import-logic-app
           resource-group: Tripleapoc_QA
@@ -33,7 +33,7 @@ jobs:
           package: logic-app-package.zip
 
       - name: Start Logic App workflow in QA resource group
-        uses: microsoft/logicapps-action@v1
+        uses: azure/logicapps-action@v1
         with:
           action-name: start-logic-app
           resource-group: Tripleapoc_QA
