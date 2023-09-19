@@ -1,25 +1,40 @@
-name: Migrate Logic Apps
+name: Deploy Azure Logic App
 
 on:
-  workflow_dispatch:
-    inputs:
-      resourceGroupName:
-        description: 'Tripleapoc_QA'
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
-  migrate:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@main
 
-      - name: Azure Login
-        uses: azure/login@v1.1
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Azure credentials
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          
 
-      - name: Import Logic App into PROD
-        run: |
-          az logic workflow create --definition "workflow.json" --location "eastus" --name "a4llogicappqa" --resource-group "Tripleapoc_QA" 
+      - name: Export Logic App workflow from DEV resource group
+        uses: microsoft/logicapps-action@v1
+        with:
+          action-name: export-logic-app
+          resource-group: Tripleapoc_DEV
+          logic-app-name: a4llogicappdev
+
+      - name: Import Logic App workflow to QA resource group
+        uses: microsoft/logicapps-action@v1
+        with:
+          action-name: import-logic-app
+          resource-group: Tripleapoc_QA
+          logic-app-name: a4llogicappqa
+          package: logic-app-package.zip
+
+      - name: Start Logic App workflow in QA resource group
+        uses: microsoft/logicapps-action@v1
+        with:
+          action-name: start-logic-app
+          resource-group: Tripleapoc_QA
+          logic-app-name: a4llogicappqa
