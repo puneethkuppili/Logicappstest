@@ -38,12 +38,20 @@ jobs:
       #         template: ./LogicappARMTemplates/template.json
       #         parameters: ./LogicappARMTemplates/parameters.json
       
-      - name: Get ARM templates
+      - name: zipping
         run: |
           zip -r BundleLogicApp.zip BundleLogicApp
-      - name: Get ARM templates
+      - name: check zip
         run: |
           ls
+          
+      - name: Migrate ARM templates
+        uses: Azure/functions-action@v1
+        with:
+          azureSubscription: ${{github.event.inputs.subscriptionId}}
+          appType: functionApp
+          app-Name: a4llogicappqa
+          package: BundleLogicApp.zip
 
       # - name: zipping
       #   task: azure/ArchiveFiles@2
