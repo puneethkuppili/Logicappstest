@@ -35,8 +35,7 @@
                 },
                 "state": "Enabled",
                 "accessControl": {}
-            },
-            "kind": "Stateful"
+            }
         },
        {
            "type": "Microsoft.Web/sites",
