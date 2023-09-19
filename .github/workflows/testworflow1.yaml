@@ -1,0 +1,61 @@
+name: Migrate Logic Apps test
+
+on:
+  workflow_dispatch:
+    inputs:
+      subscriptionId:
+        description: '581c5e0c-b29b-4026-aa7f-019b1a1f69c4'
+        required: true
+      resourceGroupName:
+        description: 'Tripleapoc_QA'
+        required: true
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+
+      - name: Azure Login
+        uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+ 
+      - name: Get ARM templates
+        run: |
+          echo "Getting ARM templates..."
+          ls ./LogicappARMTemplates
+          echo $(Build.Repository.LocalPath)
+          echo $(Build.ArtifactStagingDirectory)
+         
+      # - name: Migrate ARM templates
+      #   uses: azure/arm-deploy@v1
+      #   with:
+      #         subscriptionId: ${{github.event.inputs.subscriptionId}}
+      #         resourceGroupName: ${{github.event.inputs.resourceGroupName}}
+      #         template: ./LogicappARMTemplates/template.json
+      #         parameters: ./LogicappARMTemplates/parameters.json
+      - name: zipping
+        uses: ArchiveFiles@2
+        with:
+          rootFolderOrFile: Logicappstest\BundleLogicApp
+          includeRootFolder: false
+          archiveType: zip
+          archiveFile: $(Build.ArtifactStagingDirectory)/archive.zip
+          replaceExistingArchive: true
+          verbose: true
+                
+
+      # - name: List Resource Groups Before Deployment
+      #   run: az group list --output table
+      #   env:
+      #     AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      #   # ... (ARM template deployment steps)
+
+      # - name: List Resource Groups After Deployment
+      #   run: az group list --output table
+      #   env:
+      #     AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}

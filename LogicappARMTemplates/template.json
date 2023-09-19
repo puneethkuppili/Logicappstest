@@ -15,9 +15,13 @@
    "resources": [
         {
             "type": "Microsoft.Logic/workflows",
-            "apiVersion": "2016-06-01",
+            "apiVersion": "2021-09-01",
             "name": "[parameters('sites_a4llogicappdev_name')]",
             "location": "East US",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
             "dependsOn": [
             ],
             "properties": {
@@ -37,6 +41,17 @@
                 "accessControl": {}
             }
         },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "name": "ASP-All4labeltripleapocqa",
+            "location": "eastus",
+            "sku": {
+              "name": "WS1",
+              "tier": "WorkflowStandard"
+            },
+            "kind": "windows"
+        },    
        {
            "type": "Microsoft.Web/sites",
            "apiVersion": "2022-09-01",
