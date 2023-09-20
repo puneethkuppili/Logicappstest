@@ -38,12 +38,6 @@
                 "accessControl": {}
             }
         },
-        "sku": {
-        "name": "S1",
-        "tier": "Standard",
-        "size": "S1",
-        "family": "S"
-      },
         {
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2018-02-01",
