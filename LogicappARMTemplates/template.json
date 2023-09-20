@@ -35,7 +35,6 @@
                     }
                 },
                 "state": "Enabled",
-                "kind": "Stateful",
                 "accessControl": {}
             }
         },
