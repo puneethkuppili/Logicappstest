@@ -1,0 +1,57 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Get_blob_SAS_URI_using_path": {
+                "inputs": {
+                    "parameters": {
+                        "blobName": "@triggerBody()?['blobpath']",
+                        "containerName": "raw",
+                        "expiryTime": "@addHours(utcNow(),2)",
+                        "permissions": "Read",
+                        "startTime": "@utcNow()"
+                    },
+                    "serviceProviderConfiguration": {
+                        "connectionName": "AzureBlob-4",
+                        "operationId": "getBlobSASUri",
+                        "serviceProviderId": "/serviceProviders/AzureBlob"
+                    }
+                },
+                "runAfter": {},
+                "type": "ServiceProvider"
+            },
+            "Response": {
+                "inputs": {
+                    "body": "@body('Get_blob_SAS_URI_using_path')",
+                    "statusCode": 200
+                },
+                "kind": "Http",
+                "runAfter": {
+                    "Get_blob_SAS_URI_using_path": [
+                        "SUCCEEDED"
+                    ]
+                },
+                "type": "Response"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "triggers": {
+            "When_a_HTTP_request_is_received": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "blobpath": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "kind": "Stateful"
+}

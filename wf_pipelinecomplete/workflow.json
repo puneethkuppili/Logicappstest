@@ -1,0 +1,46 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Send_an_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Body": "<p>This is to inform you that the Azure Data Factory pipeline named @{triggerBody()?['Pipelinename']} has successfully completed its run.</p><p>Please take a moment to log in to the system and review the processed records. If everything looks correct, kindly proceed with the approval process.<span>\n\n</span></p><p>Best regards,</p><p>All4Lables</p>",
+                        "Cc": "puneeth.k@technovert.com;madhuri.v@technovert.com;salendra.d@technovert.com;priya.g@technovert.com;",
+                        "Importance": "Normal",
+                        "Subject": "Pipeline Run is successfully completed.",
+                        "To": "madan.b@technovert.com;"
+                    },
+                    "host": {
+                        "connection": {
+                            "referenceName": "office365-3"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "triggers": {
+            "When_a_HTTP_request_is_received": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "Pipelinename": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "kind": "Stateful"
+}

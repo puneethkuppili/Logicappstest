@@ -1,0 +1,109 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Read_blob_content": {
+                "inputs": {
+                    "parameters": {
+                        "blobName": "@triggerBody()?['RejectedFilePath']",
+                        "containerName": "rejections"
+                    },
+                    "serviceProviderConfiguration": {
+                        "connectionName": "AzureBlob-4",
+                        "operationId": "readBlob",
+                        "serviceProviderId": "/serviceProviders/AzureBlob"
+                    }
+                },
+                "runAfter": {},
+                "type": "ServiceProvider"
+            },
+            "Read_blob_content_1": {
+                "inputs": {
+                    "parameters": {
+                        "blobName": "@triggerBody()?['SourceFilepath']",
+                        "containerName": "raw"
+                    },
+                    "serviceProviderConfiguration": {
+                        "connectionName": "AzureBlob-4",
+                        "operationId": "readBlob",
+                        "serviceProviderId": "/serviceProviders/AzureBlob"
+                    }
+                },
+                "runAfter": {
+                    "Read_blob_content": [
+                        "SUCCEEDED"
+                    ]
+                },
+                "type": "ServiceProvider"
+            },
+            "Send_an_email_(V2)_1": {
+                "inputs": {
+                    "body": {
+                        "Attachments": [
+                            {
+                                "ContentBytes": "@{base64(body('Read_blob_content')?['content'])}",
+                                "Name": "@triggerBody()?['RejectedFileName']"
+                            },
+                            {
+                                "ContentBytes": "@{base64(body('Read_blob_content_1')?['content'])}",
+                                "Name": "@triggerBody()?['SourceFileName']"
+                            }
+                        ],
+                        "Body": "<p>Dear Customer,</p><p>We hope this email finds you well. We regret to inform you that we are unable to process your recent order due to issues with the order files submitted. We apologize for any inconvenience this may cause.</p><p>Attached the rejected order file included with reason for rejection. Please include the required information and resend the order.</p><p><br></p><p>Best regards,</p><p>All4Lables</p>",
+                        "Cc": "@triggerBody()?['RejectedEmailIdCC']",
+                        "Importance": "Normal",
+                        "Subject": "Order Rejected",
+                        "To": "@triggerBody()?['RejectionEmailIdTo']"
+                    },
+                    "host": {
+                        "connection": {
+                            "referenceName": "office365-3"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {
+                    "Read_blob_content_1": [
+                        "SUCCEEDED"
+                    ]
+                },
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "triggers": {
+            "When_a_HTTP_request_is_received": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "RejectedEmailIdCC": {
+                                "type": "string"
+                            },
+                            "RejectedFileName": {
+                                "type": "string"
+                            },
+                            "RejectedFilePath": {
+                                "type": "string"
+                            },
+                            "RejectionEmailIdTo": {
+                                "type": "string"
+                            },
+                            "SourceFileName": {
+                                "type": "string"
+                            },
+                            "SourceFilepath": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "kind": "Stateful"
+}

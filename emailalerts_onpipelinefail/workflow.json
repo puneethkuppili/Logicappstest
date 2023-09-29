@@ -1,0 +1,57 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Send_an_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Body": "<p>Hi Team,</p><p>Your pipeline is failed.</p><p>PipelineName:@{triggerBody()?['PipelineName']}</p><p>PipelineRunID:@{triggerBody()?['PipelineRunId']}</p><p>DataFactoryName:@{triggerBody()?['DataFactoryName']}</p><p>TriggerName:@{triggerBody()?['TriggerName']}</p><p>TriggeredByPipeline:@{triggerBody()?['TriggeredByPipeline']}</p><p><br></p><p>Thanks &amp; Regards,</p><p>Puneeth</p><p><br></p>",
+                        "Importance": "Normal",
+                        "Subject": "PipelineFailureAlert",
+                        "To": "puneeth.k@technovert.com"
+                    },
+                    "host": {
+                        "connection": {
+                            "referenceName": "office365-3"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "triggers": {
+            "When_a_HTTP_request_is_received": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "DataFactoryName": {
+                                "type": "string"
+                            },
+                            "PipelineName": {
+                                "type": "string"
+                            },
+                            "PipelineRunId": {
+                                "type": "string"
+                            },
+                            "TriggerName": {
+                                "type": "string"
+                            },
+                            "TriggeredByPipeline": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "kind": "Stateful"
+}

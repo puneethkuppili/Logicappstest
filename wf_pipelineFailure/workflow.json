@@ -1,0 +1,46 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Send_an_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Body": "<p>This is to inform you that Azure Data Factory pipeline named @{triggerBody()?['Pipelinename']} is failed.<br></p><p>The pipeline run failed due to an activity failure. Please check the activity grid, audit logs for more detailed information.<br><br>Best regards,</p><p>All4Labels.</p>",
+                        "Cc": "puneeth.k@technovert.com;madhuri.v@technovert.com;salendra.d@technovert.com;priya.g@technovert.com;",
+                        "Importance": "Normal",
+                        "Subject": "Pipeline Run is unsuccessful.",
+                        "To": "madan.b@technovert.com;"
+                    },
+                    "host": {
+                        "connection": {
+                            "referenceName": "office365-3"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "triggers": {
+            "When_a_HTTP_request_is_received": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "Pipelinename": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "kind": "Stateful"
+}
